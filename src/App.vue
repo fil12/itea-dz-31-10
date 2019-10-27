@@ -1,28 +1,69 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!--
+    - refs
+    - mixins
+    - custom directive
+    - animation
+    - filters
+-->
+
+<!--------------------------------------MIXINS----------------------------------------------->
+
+    <div class="tabs">
+      <button type="button" @click="curTab = 'mix'">Mixins</button>
+      <button type="button" @click="curTab = 'dir'">Directives + Animation</button>
+      <button type="button" @click="curTab = 'filt'">Filters</button>
+    </div>
+    <div class="tabs-content">
+      <div id="mixins" v-show="curTab === 'mix'">
+        <mixins></mixins>
+      </div>
+
+<!--------------------------------------DIRECTIVES + ANIMATION----------------------------------------------->
+
+      <div id="directives" v-if="curTab === 'dir'">
+        <directives></directives>
+      </div>
+
+<!--------------------------------------FILTERS----------------------------------------------->
+
+      <div id="filters" v-if="curTab === 'filt'">
+        <filters></filters>
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Mixins from './components/Mixins'
+import Directives from './components/Directives'
+import Filters from './components/Filters'
 
 export default {
   name: 'app',
+
   components: {
-    HelloWorld
+    Mixins, Directives, Filters
+  },
+  data() {
+    return {
+      curTab: 'mix'
+    }
+
   }
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
+  margin-top: 60px
+
+
 </style>
