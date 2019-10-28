@@ -8,14 +8,13 @@
     - filters
 -->
 
-    <btn></btn>
-
 <!--------------------------------------MIXINS----------------------------------------------->
 
     <div class="tabs">
-      <button type="button" @click="curTab = 'mix'">Mixins</button>
-      <button type="button" @click="curTab = 'dir'">Directives + Animation</button>
-      <button type="button" @click="curTab = 'filt'">Filters</button>
+      <button type="button" :style="{'background-color': curTab === 'mix' ? 'green' : 'transparent'}" @click="curTab = 'mix'">Mixins</button>
+      <button type="button" :style="{'background-color': curTab === 'dir' ? 'green' : 'transparent'}" @click="curTab = 'dir'">Directives + Animation</button>
+      <button type="button" :style="{'background-color': curTab === 'filt' ? 'green' : 'transparent'}" @click="curTab = 'filt'">Filters</button>
+      <button type="button" :style="{'background-color': curTab === 'slider' ? 'green' : 'transparent'}" @click="curTab = 'slider'">Slider</button>
     </div>
     <div class="tabs-content">
       <div id="mixins" v-show="curTab === 'mix'">
@@ -34,6 +33,8 @@
         <filters></filters>
       </div>
 
+      <slider></slider>
+
     </div>
   </div>
 </template>
@@ -43,17 +44,17 @@ import Mixins from './components/Mixins'
 import Directives from './components/Directives'
 import Filters from './components/Filters'
 
-import Btn from './components/ripple/Btn'
+import Slider from './components/slider/Slider'
 
 export default {
   name: 'app',
 
   components: {
-    Mixins, Directives, Filters, Btn
+    Mixins, Directives, Filters, Slider
   },
   data() {
     return {
-      curTab: 'mix'
+      curTab: 'slider'
     }
 
   }
