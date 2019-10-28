@@ -8,6 +8,8 @@
     - filters
 -->
 
+    <btn></btn>
+
 <!--------------------------------------MIXINS----------------------------------------------->
 
     <div class="tabs">
@@ -41,11 +43,13 @@ import Mixins from './components/Mixins'
 import Directives from './components/Directives'
 import Filters from './components/Filters'
 
+import Btn from './components/ripple/Btn'
+
 export default {
   name: 'app',
 
   components: {
-    Mixins, Directives, Filters
+    Mixins, Directives, Filters, Btn
   },
   data() {
     return {
