@@ -33,17 +33,17 @@ function scrollTo(elemTo, dur, timeFn, callback) {
     const timeFunction = easings[easing](time);
     window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
 
-    if (window.pageYOffset === destinationOffsetToScroll) {
+    if (Math.ceil(window.pageYOffset) === destinationOffsetToScroll) {
       if (callback) {
         callback();
       }
       return;
     }
 
-    requestAnimationFrame(scroll);
+    window.requestAnimationFrame(scroll);
   }
 
-  scroll();
+  window.requestAnimationFrame(scroll);
 }
 
 export default {
