@@ -3,7 +3,7 @@
     <h1 style="color:red">/* Directives */</h1>
     <div>
       <p style="color:green"></p>
-      <img alt="Vue logo" src="../assets/logo.png" v-tooltip:left="'test'">
+      <img alt="Vue logo" src="../assets/logo.png" class="button--green" v-tooltip:left="'test'">
     </div>
 
   </div>

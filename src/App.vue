@@ -38,6 +38,12 @@
       <div id="animation" v-if="curTab === 'anim'">
         <animation></animation>
       </div>
+      <div>
+        <btn1 label="btn1" @parentHandler="parentEventHandler"/>
+      </div>
+      <div>
+        <btn2 label="btn2" @parentHandler="parentEventHandler"/>
+      </div>
 
     </div>
   </div>
@@ -98,19 +104,24 @@ import Mixins from './components/Mixins'
 import Directives from './components/Directives'
 import Filters from './components/Filters'
 import Animation from './components/Anim'
-
+import Btn1 from "./components/Btn1"
+import Btn2 from "./components/Btn2";
 
 export default {
   name: 'app',
 
   components: {
-    Mixins, Directives, Filters, Animation
+    Mixins, Directives, Filters, Animation, Btn1, Btn2
   },
   data() {
     return {
       curTab: 'mix'
     }
-
+  },
+  methods:{
+    parentEventHandler(e){
+      e.target.style.background = 'green';
+    }
   }
 }
 </script>
@@ -123,6 +134,9 @@ export default {
   text-align: center
   color: #2c3e50
   margin-top: 60px
-
+.btn--btn1
+  background: aqua
+.btn--btn2
+  background: blue
 
 </style>

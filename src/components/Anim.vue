@@ -15,6 +15,7 @@
     <p style="color:green">/* Animation - transition-group */</p>
     <transition-group name="list" key="listBox" tag="ul">
       <li v-for="(val, i) in list"
+          v-after-loop="{arr:list, index: i, fn: afterLoopMethod}"
           :style="`transition-delay: ${i * 1.1}s`" :key="`${i}-l`">
         {{ `${i} - ${val}` }}
       </li>
@@ -23,8 +24,12 @@
 </template>
 
 <script>
+  import AfterLoop from '../assets/js/afterLoop'
   export default {
     name: "Anim",
+    directives: {
+      AfterLoop
+    },
     beforeMount() {
       const vm = this;
       setTimeout(() => {
@@ -39,6 +44,12 @@
         isList: false
       }
     },
+
+    methods: {
+      afterLoopMethod() {
+        console.log('ok');
+      }
+    }
   }
 </script>
 
