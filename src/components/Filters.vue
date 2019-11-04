@@ -10,7 +10,7 @@
                 v-model="FilterForm.element"
                 placeholder="Введите кол-во элементов"
                 type="text"/>
-        <p>Вы ввели {{FilterForm.element}} элемент{{FilterForm.element | formatEnding(endings)}}</p>
+        <p>Вы ввели {{FilterForm.element}} {{FilterForm.element | formatEnding(text_forms)}}</p>
     </div>
 
 </template>
@@ -23,12 +23,20 @@
         name: "Filters",
         components: {Card, MyInput},
         filters: {
-            formatEnding(val, arr) {
-                arr.forEach(function (elem, index) {
-                    console.log(elem);
-                    if (elem.includes(val)){
-                    }
-                })
+            formatEnding(val, text_forms) {
+                console.log(val);
+                val = Math.abs(val) % 100;
+                var val1 = val % 10;
+                if (val > 10 && val < 20) {
+                    return text_forms[2];
+                }
+                if (val1 > 1 && val1 < 5) {
+                    return text_forms[1];
+                }
+                if (val1 == 1) {
+                    return text_forms[0];
+                }
+                return text_forms[2];
             }
         },
         data() {
@@ -37,16 +45,8 @@
                     element: null
                 },
 
-                endings: [
-                    [
-                       'ов', 5, 6, 7, 8, 9,
-                    ],
-                    [
-                        'а', 2, 3, 4,
-                    ],
-                    [
-                        '', 1
-                    ]
+                text_forms: [
+                  'элемент', 'элемента', 'элементов'
                 ],
                 newsArr: [
                     {
